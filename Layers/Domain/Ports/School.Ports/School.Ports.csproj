@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Entities\School.Entities\School.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

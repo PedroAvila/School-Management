@@ -8,7 +8,14 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
+    <PackageReference Include="PAN.DapperLambdaSQL" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Domain\Entities\School.Entities\School.Entities.csproj" />
+    <ProjectReference Include="..\..\..\Domain\Ports\School.Ports\School.Ports.csproj" />
   </ItemGroup>
 
 </Project>

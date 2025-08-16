@@ -11,4 +11,12 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Application\Dtos\School.Dtos\School.Dtos.csproj" />
+    <ProjectReference Include="..\..\..\Application\UseCase\School.UseCase\School.UseCase.csproj" />
+    <ProjectReference Include="..\..\Adapters\School.Adapters\School.Adapters.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\BuildingBlocks.csproj" />
+    <ProjectReference Include="..\..\Common\School.Common\School.Common.csproj" />
+  </ItemGroup>
+
 </Project>

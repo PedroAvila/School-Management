@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Schools\Delete\" />
+    <Folder Include="Schools\Update\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Domain\Ports\School.Ports\School.Ports.csproj" />
+    <ProjectReference Include="..\..\..\Infrastructure\BuildingBlocks\BuildingBlocks.csproj" />
+    <ProjectReference Include="..\..\Dtos\School.Dtos\School.Dtos.csproj" />
+  </ItemGroup>
+
 </Project>
