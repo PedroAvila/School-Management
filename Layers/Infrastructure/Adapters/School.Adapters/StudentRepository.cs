@@ -1,3 +1,6 @@
+using System.Data;
+using Dapper;
+using School.Adapters.Enums;
 using School.Entities;
 using School.Ports;
 
@@ -7,23 +10,61 @@ public class StudentRepository(string connectionString)
     : BaseRepository<Student>(connectionString),
         IStudentRepository
 {
-    public Task<Student> GetByIdAsync(int id)
+    public async Task<Student> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        using var connection = CreateConnection();
+        var student = await connection.QueryFirstAsync<Student>(
+            "sp_Student_CRUD",
+            new { Accion = OperationCrud.GET_BY_ID, Id = id },
+            commandType: CommandType.StoredProcedure
+        );
+        return student;
     }
 
-    public Task<Student> CreateAsync(Student entity)
+    public async Task<int> CreateAsync(Student entity)
     {
-        throw new NotImplementedException();
+        using var connection = CreateConnection();
+        var result = await connection.QueryFirstAsync<int>(
+            "sp_Student_CRUD",
+            new
+            {
+                Accion = OperationCrud.CREATE,
+                Code = entity.Code,
+                FirstName = entity.FirstName,
+                LastName = entity.LastName,
+                DateOfBirth = entity.DateOfBirth,
+            },
+            commandType: CommandType.StoredProcedure
+        );
+        return result;
     }
 
-    public Task<Student> UpdateAsync(Student entity)
+    public async Task<bool> UpdateAsync(Student entity)
     {
-        throw new NotImplementedException();
+        using var connection = CreateConnection();
+        var rowsAffected = await connection.ExecuteAsync(
+            "sp_Student_CRUD",
+            new
+            {
+                Accion = OperationCrud.UPDATE,
+                Id = entity.Id,
+                FirstName = entity.FirstName,
+                LastName = entity.LastName,
+                DateOfBirth = entity.DateOfBirth,
+            },
+            commandType: CommandType.StoredProcedure
+        );
+        return rowsAffected > 0;
     }
 
-    public Task DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        using var connection = CreateConnection();
+        var rowsAffected = await connection.ExecuteAsync(
+            "sp_Student_CRUD",
+            new { Accion = OperationCrud.DELETE, Id = id },
+            commandType: CommandType.StoredProcedure
+        );
+        return rowsAffected > 0;
     }
 }

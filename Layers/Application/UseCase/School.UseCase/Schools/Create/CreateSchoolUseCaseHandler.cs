@@ -21,7 +21,7 @@ public class CreateSchoolValidator : AbstractValidator<CreateSchoolDto>
             .NotEmpty()
             .WithMessage("Description is required.")
             .MaximumLength(500)
-            .WithMessage("Address must not exceed 200 characters.");
+            .WithMessage("Description must not exceed 200 characters.");
     }
 }
 

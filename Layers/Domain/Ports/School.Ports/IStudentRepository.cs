@@ -5,9 +5,9 @@ namespace School.Ports;
 public interface IStudentRepository : IBaseRepository<Student>
 {
     Task<Student> GetByIdAsync(int id);
-    Task<Student> CreateAsync(Student entity);
+    Task<int> CreateAsync(Student entity);
 
-    Task<Student> UpdateAsync(Student entity);
+    Task<bool> UpdateAsync(Student entity);
 
-    Task DeleteAsync(int id);
+    Task<bool> DeleteAsync(int id);
 }
