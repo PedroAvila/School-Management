@@ -6,21 +6,21 @@ namespace School.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SchoolController(IMediator mediator) : ControllerBase
+    public class TeacherController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator _mediator = mediator;
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateSchoolDto dto)
+        public async Task<IActionResult> Create([FromBody] CreateTeacherDto dto)
         {
             var result = await _mediator.Send(dto);
             return Created(string.Empty, result);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] UpdateSchoolCommand dto)
+        public async Task<IActionResult> Update(int id, [FromBody] UpdateTeacherDto dto)
         {
-            var command = new UpdateSchoolWithIdDto(id, dto);
+            var command = new UpdateTeacherWithIdDto(id, dto);
             var result = await _mediator.Send(command);
             return Ok(result);
         }
@@ -28,7 +28,7 @@ namespace School.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await _mediator.Send(new DeleteSchoolDto(id));
+            var result = await _mediator.Send(new DeleteTeacherDto(id));
             return Ok(result);
         }
     }

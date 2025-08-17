@@ -7,14 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Schools\Delete\" />
-    <Folder Include="Schools\Update\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\Domain\Ports\School.Ports\School.Ports.csproj" />
     <ProjectReference Include="..\..\..\Infrastructure\BuildingBlocks\BuildingBlocks.csproj" />
     <ProjectReference Include="..\..\Dtos\School.Dtos\School.Dtos.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Students\" />
+    <Folder Include="Students\Create\" />
+    <Folder Include="Students\Delete\" />
+    <Folder Include="Students\Update\" />
   </ItemGroup>
 
 </Project>
