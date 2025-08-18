@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Domain\Entities\School.Entities\School.Entities.csproj" />
     <ProjectReference Include="..\..\..\Infrastructure\BuildingBlocks\BuildingBlocks.csproj" />
   </ItemGroup>
 
