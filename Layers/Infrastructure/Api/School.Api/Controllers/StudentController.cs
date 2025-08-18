@@ -31,5 +31,14 @@ namespace School.Api.Controllers
             var result = await _mediator.Send(new DeleteStudentDto(id));
             return Ok(result);
         }
+
+        [HttpPost("AssignStudentToTeacher")]
+        public async Task<IActionResult> AssignStudentToTeacher(
+            [FromBody] AssignStudentToTeacherDto dto
+        )
+        {
+            var result = await _mediator.Send(dto);
+            return Created(string.Empty, result);
+        }
     }
 }

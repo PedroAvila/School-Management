@@ -63,7 +63,7 @@ public class CreateStudentUseCaseHandler(IStudentRepository _studentRepository)
             student.Code,
             student.FirstName,
             student.LastName,
-            student.DateOfBirth
+            DateOnly.FromDateTime(student.DateOfBirth)
         );
     }
 }

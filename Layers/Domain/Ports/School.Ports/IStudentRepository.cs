@@ -10,4 +10,6 @@ public interface IStudentRepository : IBaseRepository<Student>
     Task<bool> UpdateAsync(Student entity);
 
     Task<bool> DeleteAsync(int id);
+
+    Task<bool> AssignStudentToTeacherAsync(int studentId, int teacherId);
 }

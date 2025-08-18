@@ -67,4 +67,25 @@ public class StudentRepository(string connectionString)
         );
         return rowsAffected > 0;
     }
+
+    public async Task<bool> AssignStudentToTeacherAsync(int studentId, int teacherId)
+    {
+        using var connection = CreateConnection();
+        var result = await connection.ExecuteScalarAsync<int>(
+            @"IF NOT EXISTS (
+              SELECT 1 FROM Teachers_Students 
+              WHERE TeacherId = @TeacherId AND StudentId = @StudentId
+          )
+          BEGIN
+              INSERT INTO Teachers_Students (TeacherId, StudentId)
+              VALUES (@TeacherId, @StudentId);
+              SELECT 1;
+          END
+          ELSE
+              SELECT 0;",
+            new { TeacherId = teacherId, StudentId = studentId }
+        );
+
+        return result > 0;
+    }
 }
